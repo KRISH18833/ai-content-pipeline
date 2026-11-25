@@ -43,15 +43,16 @@ def check_not_outline_copy(text: str, outline: dict) -> dict:
 def check_structure(text: str, outline: dict) -> dict:
     lines = text.splitlines()
     h1 = [l for l in lines if l.startswith("# ")]
-    h2 = [l for l in lines if l.startswith("## ")]
+    h2_names = re.findall(r"^## (.+)$", text, flags=re.M)
     expected_h2 = len(outline["sections"]) + 1
     chunks = re.split(r"^## .+$", text, flags=re.M)[1:]
     paras = [[p for p in c.strip().split("\n\n") if p.strip()] for c in chunks]
-    thin = sum(1 for p in paras if len(p) < 2)
+    # the final section (Conclusion) is intentionally one paragraph, so only body sections need 2+
+    thin = [h2_names[i] for i, p in enumerate(paras[:-1]) if len(p) < 2]
     wall = sum(1 for p in paras for x in p if len(x.split()) > 200)
-    passed = len(h1) == 1 and len(h2) == expected_h2 and thin == 0 and wall == 0
+    passed = len(h1) == 1 and len(h2_names) == expected_h2 and not thin and wall == 0
     return {"name": "structure_ok", "passed": passed,
-            "detail": f"{len(h1)} title, {len(h2)}/{expected_h2} sections, {thin} thin sections, {wall} wall-of-text paragraphs"}
+            "detail": f"{len(h1)} title, {len(h2_names)}/{expected_h2} sections, thin body sections: {thin or 'none'}, {wall} wall-of-text paragraphs"}
 
 
 def check_repetition(text: str) -> dict:
@@ -69,21 +70,21 @@ def run_guardrails(text: str, outline: dict) -> dict:
     return {"passed": all(c["passed"] for c in checks), "checks": checks}
 
 
-def enforce_length(text: str, target: int, max_attempts: int = 2) -> tuple:
+def enforce_length(text: str, target: int, max_attempts: int = 3) -> tuple:
     log = []
-    lo, hi = _range(target)
     current = text
     for attempt in range(1, max_attempts + 1):
         n = len(current.split())
-        if lo <= n <= hi:
+        if abs(n - target) <= 0.15 * target:
             break
-        if n > hi:
-            action = f"Condense it to about {target} words by removing the least important sentences and tightening wording."
+        delta = abs(n - target)
+        if n > target:
+            action = f"Cut about {delta} words by removing the least important sentences and tightening wording."
         else:
-            action = f"Expand it to about {target} words by adding concrete examples and explanation to the thinnest sections."
+            action = f"Add about {delta} words by adding concrete examples and explanation to the thinnest body sections."
         prompt = f"""Edit the blog post below. {action}
-Keep every heading ("#" and "##" lines) exactly as written, keep all sections, keep the tone and audience level, add no new sections.
-Current length: {n} words. Target: {target} words.
+Current length: {n} words. The result must be about {target} words (between {int(target*0.9)} and {int(target*1.1)}).
+Keep every heading ("#" and "##" lines) exactly as written, keep every section, keep body sections at 2 or more paragraphs, keep the tone and audience level, add no new sections.
 
 POST:
 {current}"""
