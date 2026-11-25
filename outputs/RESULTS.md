@@ -41,3 +41,8 @@
   - [PASS] draft_not_outline_copy: expansion 3.71x outline, 0/24 key points copied verbatim
   - [PASS] structure_ok: 1 title, 9/9 sections, thin body sections: none, 0 wall-of-text paragraphs
   - [PASS] low_repetition: 0.19% repeated 4-grams (limit 2.0)
+
+## Post-run fact-check: Transformer post (source: sources/transformer_attention.txt)
+- Issues found: 0
+- Corrections applied: False
+- Guardrails after fix: PASSED

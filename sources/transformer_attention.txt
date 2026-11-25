@@ -1,0 +1,10 @@
+The Transformer architecture was introduced in the 2017 paper "Attention Is All You Need" by Vaswani et al.
+RNNs and LSTMs process tokens sequentially: the hidden state at step t depends on the hidden state at step t-1, which prevents parallelization across time steps during training.
+Vanishing and exploding gradients make it hard for RNNs to learn long-range dependencies.
+Scaled dot-product attention is computed as Attention(Q, K, V) = softmax(QK^T / sqrt(d_k)) V.
+The scores QK^T are divided by sqrt(d_k), the square root of the key dimension, to keep their variance under control. Without this scaling, large dot products push the softmax into regions with very small gradients.
+Self-attention compares every token with every other token, so time and memory grow as O(N^2) in sequence length N.
+Self-attention on its own ignores token order (it is permutation-invariant), so positional encodings are added to the input embeddings. The original paper used sinusoidal encodings.
+Multi-head attention runs several attention operations in parallel on different learned linear projections of Q, K, and V, then concatenates the results and applies a final linear projection.
+Attention and feed-forward layers are mostly matrix multiplications, which run efficiently on GPUs and TPUs.
+Pretraining Transformers on large text corpora led to models such as BERT and GPT.
