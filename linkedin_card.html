@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #05070f; }
+  .card {
+    width: 1200px; height: 627px; padding: 48px 56px; position: relative; overflow: hidden;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: #eef2ff;
+    background: radial-gradient(900px 500px at 90% -10%, rgba(99,102,241,.45), transparent 60%),
+                radial-gradient(700px 400px at -10% 110%, rgba(20,184,166,.35), transparent 60%),
+                linear-gradient(135deg, #0a0f24, #14123a);
+  }
+  .badge { display: inline-block; padding: 8px 18px; border-radius: 999px; font-size: 18px; font-weight: 600;
+    background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); color: #c7d2fe; }
+  h1 { font-size: 66px; line-height: 1.05; margin: 22px 0 10px; font-weight: 800; letter-spacing: -1px; }
+  h1 span { background: linear-gradient(90deg, #818cf8, #2dd4bf); -webkit-background-clip: text; color: transparent; }
+  .sub { font-size: 24px; color: #a5b4fc; margin-bottom: 30px; }
+  .flow { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; }
+  .step { flex: 1; padding: 16px 18px; border-radius: 16px; background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.14); }
+  .step b { display: block; font-size: 15px; color: #2dd4bf; letter-spacing: 1px; margin-bottom: 4px; }
+  .step div { font-size: 19px; font-weight: 600; }
+  .arrow { font-size: 28px; color: #818cf8; }
+  .stats { display: flex; gap: 18px; margin-bottom: 26px; }
+  .stat { flex: 1; padding: 16px 20px; border-radius: 16px; background: rgba(129,140,248,.12);
+    border: 1px solid rgba(129,140,248,.35); }
+  .stat .n { font-size: 38px; font-weight: 800; color: #fff; }
+  .stat .l { font-size: 16px; color: #c7d2fe; margin-top: 2px; }
+  .tags { display: flex; gap: 10px; }
+  .tag { padding: 7px 16px; border-radius: 10px; font-size: 17px; font-weight: 600;
+    background: rgba(45,212,191,.14); color: #5eead4; border: 1px solid rgba(45,212,191,.4); }
+  .footer { position: absolute; left: 56px; right: 56px; bottom: 34px; display: flex;
+    justify-content: space-between; align-items: center; font-size: 18px; color: #94a3b8; }
+  .footer b { color: #e2e8f0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="badge">Internship Project · Valentius Kryptix</div>
+  <h1>AI <span>Content Pipeline</span></h1>
+  <div class="sub">Topic in. Publishable blog post out.</div>
+
+  <div class="flow">
+    <div class="step"><b>STEP 1</b><div>Outline</div></div><div class="arrow">→</div>
+    <div class="step"><b>STEP 2</b><div>Draft</div></div><div class="arrow">→</div>
+    <div class="step"><b>STEP 3</b><div>Refine</div></div><div class="arrow">→</div>
+    <div class="step"><b>STEP 4</b><div>Guardrails</div></div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n">3</div><div class="l">topics, full outputs included</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">automated quality guardrails</div></div>
+    <div class="stat"><div class="n">3/3</div><div class="l">planted errors caught by fact-check</div></div>
+    <div class="stat"><div class="n">14% → 6%</div><div class="l">repeated sentence openers</div></div>
+  </div>
+
+  <div class="tags"><div class="tag">Python</div><div class="tag">Gemini API</div><div class="tag">CLI</div><div class="tag">LLM Pipeline</div></div>
+
+  <div class="footer"><div><b>Abhinav</b> · B.Tech AI &amp; ML</div><div>github.com/KRISH18833/ai-content-pipeline</div></div>
+</div>
+</body>
+</html>
