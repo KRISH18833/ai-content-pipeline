@@ -49,9 +49,9 @@ def _validate(data: dict, n_sections: int) -> None:
             raise ValueError("section missing heading or key_points")
 
 
-def generate_outline(topic: str, tone: str = "casual", audience: str = "general readers", length: str = "medium") -> dict:
-    total_words = config.LENGTHS[length]
-    n_sections = {"short": 3, "medium": 5, "long": 7}[length]
+def generate_outline(topic: str, tone: str = "casual", audience: str = "general readers", length: str = "medium", words: int = None) -> dict:
+    total_words = words or config.LENGTHS[length]
+    n_sections = max(3, min(8, round(total_words / 200)))
     prompt = _build_prompt(topic, tone, audience, total_words, n_sections)
 
     last_err = None
@@ -76,6 +76,6 @@ def generate_outline(topic: str, tone: str = "casual", audience: str = "general 
     data["topic"] = topic
     data["tone"] = tone
     data["audience"] = audience
-    data["length"] = length
+    data["length"] = "custom" if words else length
     data["total_words"] = total_words
     return data

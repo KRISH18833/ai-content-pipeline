@@ -1,0 +1,59 @@
+{
+  "title": "Why AI Can Find What You Mean, Not Just What You Type",
+  "hook": "We grab the reader's attention by comparing old keyword search to asking a genius friend who actually understands the vibe of your question.",
+  "sections": [
+    {
+      "heading": "From Exact Words to Big Ideas",
+      "key_points": [
+        "Explain how traditional search only looks for exact matching words",
+        "Show why searching for 'sad movie' misses a film titled 'tearjerker'",
+        "Introduce the concept of meaning over literal text using simple examples"
+      ],
+      "target_words": 160
+    },
+    {
+      "heading": "Turning Words into Numbers on a Map",
+      "key_points": [
+        "Explain that computers only understand numbers, not words",
+        "Use the analogy of plotting coordinates on a giant map of concepts",
+        "Show how similar ideas end up sitting close to each other on this map"
+      ],
+      "target_words": 160
+    },
+    {
+      "heading": "What Exactly Is a Vector Database?",
+      "key_points": [
+        "Define a vector database as a super-fast filing cabinet for these number maps",
+        "Contrast regular databases that sort by categories with vector databases that sort by distance",
+        "Explain why normal databases freeze when asked to find 'similar' concepts"
+      ],
+      "target_words": 160
+    },
+    {
+      "heading": "Behind the Scenes of an AI Search",
+      "key_points": [
+        "Trace what happens when you type a prompt into an AI tool",
+        "Show how the system instantly translates your question into a coordinate point",
+        "Describe how the database snags the closest neighbor points in milliseconds"
+      ],
+      "target_words": 160
+    },
+    {
+      "heading": "Real-World Examples You Use Every Day",
+      "key_points": [
+        "Look at how Spotify finds songs that match a specific late-night study mood",
+        "Examine how online shopping apps let you upload a photo to find similar shoes",
+        "See how college AI study assistants pull exact textbook quotes instantly"
+      ],
+      "target_words": 160
+    }
+  ],
+  "conclusion_point": "Vector databases act like a digital brain map that lets AI instantly find the closest match to any idea, changing search from a rigid rule-book into a fluid conversation.",
+  "intro_words": 120,
+  "conclusion_words": 80,
+  "topic": "How vector databases power modern AI search",
+  "tone": "beginner",
+  "audience": "college students new to AI",
+  "length": "medium",
+  "total_words": 1000
+}
