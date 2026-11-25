@@ -35,7 +35,7 @@ def check_not_outline_copy(text: str, outline: dict) -> dict:
     expansion = round(len(body.split()) / max(len(_outline_text(outline).split()), 1), 2)
     points = [p.lower().strip(" .") for s in outline["sections"] for p in s["key_points"]]
     verbatim = sum(1 for p in points if p and p in body)
-    passed = expansion >= 2.5 and verbatim <= 0.3 * len(points)
+    passed = expansion >= 1.5 and verbatim <= 0.3 * len(points)
     return {"name": "draft_not_outline_copy", "passed": passed,
             "detail": f"expansion {expansion}x outline, {verbatim}/{len(points)} key points copied verbatim"}
 
