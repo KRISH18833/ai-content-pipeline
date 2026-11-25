@@ -46,3 +46,7 @@
 - Issues found: 0
 - Corrections applied: False
 - Guardrails after fix: PASSED
+
+## Known limitation: LLM fact-checker miss
+- The automated fact-check (source: sources/transformer_attention.txt) found 0 issues, but the Transformer post said scores are divided by the 'inverse square root' of d_k, which is wrong (the correct operation is dividing by sqrt(d_k)).
+- This was caught during manual review and fixed by hand. The fact-checker reliably catches blatant contradictions (3/3 planted errors in test_factcheck.py) but can miss subtle technical wording errors, so human review is still required before publishing.
