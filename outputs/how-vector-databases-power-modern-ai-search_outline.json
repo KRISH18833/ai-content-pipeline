@@ -1,54 +1,54 @@
 {
-  "title": "Why AI Can Find What You Mean, Not Just What You Type",
-  "hook": "We grab the reader's attention by comparing old keyword search to asking a genius friend who actually understands the vibe of your question.",
+  "title": "From Keywords to Meaning: How Vector Databases Supercharge AI Search",
+  "hook": "We compare traditional search to finding a specific book in a library where all the books are sorted by color instead of subject matter.",
   "sections": [
     {
-      "heading": "From Exact Words to Big Ideas",
+      "heading": "Why Old-School Search Misses the Point",
       "key_points": [
-        "Explain how traditional search only looks for exact matching words",
-        "Show why searching for 'sad movie' misses a film titled 'tearjerker'",
-        "Introduce the concept of meaning over literal text using simple examples"
+        "Traditional keyword search matches exact words you type into a search bar.",
+        "It fails when you use synonyms or ask questions in everyday language.",
+        "Computers traditionally see words as isolated letters rather than concepts with meaning."
       ],
       "target_words": 160
     },
     {
-      "heading": "Turning Words into Numbers on a Map",
+      "heading": "Turning Ideas into Numbers with Embeddings",
       "key_points": [
-        "Explain that computers only understand numbers, not words",
-        "Use the analogy of plotting coordinates on a giant map of concepts",
-        "Show how similar ideas end up sitting close to each other on this map"
+        "AI translates words and sentences into long lists of numbers called vectors.",
+        "Similar concepts get numbers that are close to each other in a mathematical space.",
+        "Think of it like plotting words on a giant digital map based on what they actually mean."
       ],
       "target_words": 160
     },
     {
-      "heading": "What Exactly Is a Vector Database?",
+      "heading": "What Makes a Vector Database Different",
       "key_points": [
-        "Define a vector database as a super-fast filing cabinet for these number maps",
-        "Contrast regular databases that sort by categories with vector databases that sort by distance",
-        "Explain why normal databases freeze when asked to find 'similar' concepts"
+        "Standard databases are great for exact matches like phone numbers and birthdays.",
+        "Vector databases are built specifically to measure distance and geometric closeness.",
+        "They find the closest neighborhood of ideas in milliseconds among millions of data points."
       ],
       "target_words": 160
     },
     {
-      "heading": "Behind the Scenes of an AI Search",
+      "heading": "How AI Search Uses Vectors in Real Life",
       "key_points": [
-        "Trace what happens when you type a prompt into an AI tool",
-        "Show how the system instantly translates your question into a coordinate point",
-        "Describe how the database snags the closest neighbor points in milliseconds"
+        "Spotify uses this technology to recommend songs that share a similar mood and vibe.",
+        "ChatGPT uses it to quickly search through thousands of documents to answer your questions.",
+        "Image search lets you upload a photo of shoes to find visually matching products instantly."
       ],
       "target_words": 160
     },
     {
-      "heading": "Real-World Examples You Use Every Day",
+      "heading": "Building the Future of Smarter Applications",
       "key_points": [
-        "Look at how Spotify finds songs that match a specific late-night study mood",
-        "Examine how online shopping apps let you upload a photo to find similar shoes",
-        "See how college AI study assistants pull exact textbook quotes instantly"
+        "Developers rely on vector databases to give AI long-term memory and context.",
+        "This technology bridges the gap between human intuition and computer processing.",
+        "You do not need a math degree to use these tools in your own student projects."
       ],
       "target_words": 160
     }
   ],
-  "conclusion_point": "Vector databases act like a digital brain map that lets AI instantly find the closest match to any idea, changing search from a rigid rule-book into a fluid conversation.",
+  "conclusion_point": "Vector databases act like a mental map for AI, allowing computers to search through information based on true meaning rather than matching exact words.",
   "intro_words": 120,
   "conclusion_words": 80,
   "topic": "How vector databases power modern AI search",

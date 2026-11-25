@@ -1,0 +1,5 @@
+UPI (Unified Payments Interface) was developed by the National Payments Corporation of India (NPCI) and launched in 2016.
+It lets users link bank accounts to a mobile app and pay using a virtual payment address (VPA), a QR code, or a phone number.
+Transfers are instant, work 24/7, and move money directly between bank accounts.
+Multiple apps such as PhonePe, Google Pay, and Paytm can run on the same UPI network, so users are not locked into one app.
+Users approve each payment with a UPI PIN.
