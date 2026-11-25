@@ -20,6 +20,10 @@ def main():
     print("Metrics before:", r["metrics_before"])
     print("Metrics after: ", r["metrics_after"])
     print("Report:", r["report"])
+    print("Length enforcement:", r["length_log"] or "not needed")
+    print("\nGUARDRAILS:", "PASSED" if r["guardrails"]["passed"] else "FAILED")
+    for c in r["guardrails"]["checks"]:
+        print(f"  [{'PASS' if c['passed'] else 'FAIL'}] {c['name']}: {c['detail']}")
 
 
 if __name__ == "__main__":
