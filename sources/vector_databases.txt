@@ -1,0 +1,6 @@
+Vector databases store embeddings, which are lists of numbers (vectors) that represent the meaning of text, images, or audio. An embedding model converts content into a vector, and similar content ends up close together in the vector space.
+Searching works by converting the query into a vector and finding the stored vectors nearest to it. Closeness is measured with metrics such as cosine similarity, Euclidean distance, or dot product.
+Comparing a query against every stored vector is slow at scale, so most vector databases use approximate nearest neighbor (ANN) algorithms such as HNSW or IVF. These trade a small amount of accuracy for a large gain in speed.
+Traditional keyword search, such as BM25, matches exact terms and cannot find results that use different words with the same meaning. Hybrid search combines keyword matching with vector similarity.
+Popular vector databases include Pinecone, Weaviate, Milvus, Qdrant, and Chroma. PostgreSQL can also store vectors through the pgvector extension.
+Vector databases are a core part of retrieval-augmented generation (RAG), where an LLM is given relevant documents retrieved by vector search before it answers a question.
