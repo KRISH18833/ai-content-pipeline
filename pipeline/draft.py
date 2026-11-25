@@ -34,9 +34,14 @@ Rules:
 def _write_section(outline: dict, section: dict, previous_text: str) -> str:
     points = "\n".join(f"- {p}" for p in section["key_points"])
     prev = previous_text[-700:] if previous_text else "(this is the first section after the intro)"
+    tw = section["target_words"]
+    if tw < 150:
+        para_rule = "Exactly 2 short paragraphs of 2 to 3 sentences each."
+    else:
+        para_rule = "2 to 3 paragraphs of 3 to 5 sentences each."
     prompt = f"""{_style(outline)}
 
-Write the body of ONE section in about {section['target_words']} words.
+Write the body of ONE section in about {tw} words. HARD LIMIT: do not exceed {int(tw * 1.1)} words.
 Section heading (do NOT print it): {section['heading']}
 Cover these key points, in order:
 {points}
@@ -45,8 +50,8 @@ For flow, here is the end of the text written so far. Continue naturally from it
 \"\"\"{prev}\"\"\"
 
 Rules:
-- 2 to 3 paragraphs, each 3 to 5 sentences.
-- Cover every key point with a concrete example or explanation.
+- {para_rule}
+- Cover every key point briefly with a concrete example or explanation.
 - Do NOT repeat ideas already used earlier in the post.
 - Do NOT include the heading, bullet lists, or a conclusion."""
     return call_llm(prompt, system=SYSTEM, temperature=0.7)

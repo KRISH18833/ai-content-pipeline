@@ -12,8 +12,8 @@ print(check_not_outline_copy(fake, outline))
 print("\nTEST 2: too-short text must FAIL the length check")
 print(check_length("# Title\n\n" + "word " * 100, 700))
 
-print("\nTEST 3: the earlier 1004-word run (target 700) must FAIL length")
-print(check_length(text, 700))
+print("\nTEST 3: a 1000-word text with target 700 must FAIL length")
+print(check_length("# T\n\n" + "word " * 1000, 700))
 
 print("\nTEST 4: enforce_length must bring it into range")
 fixed, log = enforce_length(text, 700)

@@ -70,6 +70,28 @@ def run_guardrails(text: str, outline: dict) -> dict:
     return {"passed": all(c["passed"] for c in checks), "checks": checks}
 
 
+def trim_by_section(text: str, target: int) -> str:
+    parts = re.split(r"(?m)^(?=## )", text)
+    head, sections = parts[0], parts[1:]
+    head_words = len(head.split())
+    total = len(text.split())
+    ratio = max(target - head_words, 50) / max(total - head_words, 1)
+    out = [head.rstrip() + "\n\n"]
+    for sec in sections:
+        first, _, body = sec.partition("\n")
+        body = body.strip()
+        goal = max(40, int(len(body.split()) * ratio))
+        prompt = f"""Rewrite this section body to about {goal} words (it is currently {len(body.split())}).
+Keep the key ideas and the tone. Use 2 paragraphs if {goal} is 100 or more, otherwise 1 to 2 short paragraphs.
+Do NOT include a heading. Return only the rewritten body.
+
+BODY:
+{body}"""
+        new_body = call_llm(prompt, system=ADJUST_SYSTEM, temperature=0.3)
+        out.append(f"{first}\n\n{new_body.strip()}\n\n")
+    return "".join(out)
+
+
 def enforce_length(text: str, target: int, max_attempts: int = 3) -> tuple:
     log = []
     current = text
@@ -94,4 +116,13 @@ POST:
         log.append(f"attempt {attempt}: {n} -> {len(candidate.split())} words, headings_ok={ok_headings}, closer={closer}")
         if ok_headings and closer:
             current = candidate
+
+    n = len(current.split())
+    if n > int(target * config.MAX_WORD_RATIO):
+        trimmed = trim_by_section(current, target)
+        ok_headings = _headings(trimmed) == _headings(current)
+        closer = abs(len(trimmed.split()) - target) < abs(n - target)
+        log.append(f"section-trim fallback: {n} -> {len(trimmed.split())} words, headings_ok={ok_headings}, closer={closer}")
+        if ok_headings and closer:
+            current = trimmed
     return current, log
